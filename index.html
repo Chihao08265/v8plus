@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CHIHABCR VIP - ENTERPRISE BACCARAT PREDICTION SYSTEM</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+1. DESIGN SYSTEM & CSS CUSTOM PROPERTIES (ROOT VARIABLES)
+========================================================================== */
+:root {
+--bg-primary: #020408;
+--bg-secondary: #070b12;
+--bg-surface: #0d1320;
+--bg-card: rgba(15, 23, 38, 0.88);
+--bg-card-hover: rgba(22, 34, 56, 0.95);
+--gold-primary: #ffb700;
+--gold-light: #ffe066;
+--gold-dark: #b38000;
+--gold-gradient: linear-gradient(135deg, #ffe066 0%, #ffb700 50%, #996600 100%);
+--cyan-neon: #00f3ff;
+--cyan-glow: rgba(0, 243, 255, 0.4);
+--player-blue: #0077ff;
+--player-gradient: linear-gradient(135deg, #4da6ff 0%, #0077ff 50%, #0044cc 100%);
+--banker-red: #ff1a40;
+--banker-gradient: linear-gradient(135deg, #ff4d6d 0%, #ff1a40 50%, #b3001b 100%);
+--tie-green: #00e676;
+--tie-gradient: linear-gradient(135deg, #66ffa6 0%, #00e676 50%, #008040 100%);
+--text-main: #ffffff;
+--text-muted: #8292ab;
+--text-dimmed: #475569;
+--border-subtle: rgba(255, 255, 255, 0.08);
+--border-gold: rgba(255, 183, 0, 0.35);
+--border-cyan: rgba(0, 243, 255, 0.35);
+--radius-xs: 4px;
+--radius-sm: 8px;
+--radius-md: 14px;
+--radius-lg: 24px;
+--shadow-base: 0 12px 35px rgba(0, 0, 0, 0.85);
+--shadow-neon: 0 0 25px rgba(0, 243, 255, 0.15);
+}
+/* ==========================================================================
+2. GLOBAL RESET & BASE STYLING
+========================================================================== */
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+}
+body {
+font-family: 'Rajdhani', sans-serif;
+background-color: var(--bg-primary);
+color: var(--text-main);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background-image:
+radial-gradient(circle at 50% 0%, rgba(0, 243, 255, 0.07) 0%, transparent 60%),
+radial-gradient(circle at 50% 100%, rgba(255, 183, 0, 0.05) 0%, transparent 60%),
+linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+overflow-x: hidden;
+}
+/* ==========================================================================
+3. CONTAINER & WATERMARK
+========================================================================== */
+.app-container {
+width: 100%;
+max-width: 480px;
+height: 100vh;
+max-height: 960px;
+background: var(--bg-surface);
+border: 1px solid var(--border-gold);
+border-radius: var(--radius-lg);
+box-shadow: var(--shadow-base), var(--shadow-neon);
+display: flex;
+flex-direction: column;
+position: relative;
+overflow: hidden;
+backdrop-filter: blur(25px);
+}
+.watermark-bg {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) rotate(-32deg);
+font-family: 'Orbitron', sans-serif;
+font-size: 42px;
+font-weight: 900;
+color: rgba(255, 255, 255, 0.015);
+pointer-events: none;
+letter-spacing: 10px;
+white-space: nowrap;
+z-index: 0;
+}
+/* ==========================================================================
+4. HEADER & SYSTEM STATUS
+========================================================================== */
+.app-header {
+padding: 14px 18px;
+background: rgba(7, 11, 18, 0.95);
+border-bottom: 1px solid var(--border-cyan);
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 10;
+}
+.brand-wrapper {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.brand-icon {
+width: 32px;
+height: 32px;
+background: var(--gold-gradient);
+border-radius: var(--radius-xs);
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Orbitron', sans-serif;
+font-weight: 900;
+color: #000;
+font-size: 16px;
+box-shadow: 0 0 12px rgba(255, 183, 0, 0.5);
+}
+.brand-title-group h1 {
+font-family: 'Orbitron', sans-serif;
+font-size: 15px;
+font-weight: 900;
+background: var(--gold-gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+letter-spacing: 1px;
+}
+.brand-title-group span {
+font-size: 9px;
+color: var(--text-muted);
+letter-spacing: 0.5px;
+text-transform: uppercase;
+}
+.status-wrapper {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.role-pill {
+font-family: 'Orbitron', sans-serif;
+font-size: 9px;
+padding: 3px 7px;
+border-radius: 4px;
+font-weight: 700;
+letter-spacing: 0.5px;
+}
+.role-admin-badge { background: rgba(255, 26, 64, 0.2); border: 1px solid var(--banker-red); color: var(--banker-red); }
+.role-member-badge { background: rgba(0, 243, 255, 0.15); border: 1px solid var(--cyan-neon); color: var(--cyan-neon); }
+.coin-pill {
+display: flex;
+align-items: center;
+gap: 5px;
+background: rgba(255, 183, 0, 0.12);
+border: 1px solid rgba(255, 183, 0, 0.4);
+padding: 4px 10px;
+border-radius: 20px;
+font-family: 'Orbitron', sans-serif;
+font-size: 12px;
+font-weight: 700;
+color: var(--gold-primary);
+box-shadow: 0 0 10px rgba(255, 183, 0, 0.15);
+}
+/* ==========================================================================
+5. NAVIGATION TABS
+========================================================================== */
+.nav-tabbar {
+display: flex;
+background: rgba(2, 4, 8, 0.98);
+border-bottom: 1px solid var(--border-subtle);
+z-index: 10;
+}
+.nav-item {
+flex: 1;
+padding: 12px 6px;
+border: none;
+background: transparent;
+color: var(--text-muted);
+font-family: 'Rajdhani', sans-serif;
+font-size: 12px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.8px;
+cursor: pointer;
+transition: all 0.25s ease;
+position: relative;
+}
+.nav-item.active {
+color: var(--cyan-neon);
+text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+}
+.nav-item.active::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 10%;
+right: 10%;
+height: 2px;
+background: var(--cyan-neon);
+box-shadow: 0 0 10px var(--cyan-neon);
+}
+/* ==========================================================================
+6. AUTHENTICATION OVERLAY (LOGIN SYSTEM)
+========================================================================== */
+.auth-backdrop {
+position: absolute;
+inset: 0;
+background: rgba(2, 4, 8, 0.97);
+z-index: 1000;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+backdrop-filter: blur(30px);
+transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.auth-box {
+width: 100%;
+max-width: 400px;
+background: var(--bg-card);
+border: 1px solid var(--border-gold);
+border-radius: var(--radius-md);
+padding: 30px 24px;
+box-shadow: var(--shadow-base), inset 0 0 25px rgba(255, 183, 0, 0.05);
+position: relative;
+}
+.auth-heading {
+text-align: center;
+margin-bottom: 24px;
+}
+.auth-heading h2 {
+font-family: 'Orbitron', sans-serif;
+font-size: 20px;
+font-weight: 900;
+color: var(--gold-primary);
+letter-spacing: 2px;
+margin-bottom: 6px;
+}
+.auth-heading p {
+font-size: 11px;
+color: var(--text-muted);
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+.input-group {
+margin-bottom: 14px;
+}
+.input-group label {
+display: block;
+font-size: 11px;
+color: var(--text-muted);
+text-transform: uppercase;
+letter-spacing: 1px;
+margin-bottom: 6px;
+font-weight: 700;
+}
+.input-field {
+width: 100%;
+background: rgba(0, 0, 0, 0.7);
+border: 1px solid var(--border-subtle);
+border-radius: var(--radius-sm);
+padding: 12px 14px;
+color: var(--text-main);
+font-family: 'Share Tech Mono', monospace;
+font-size: 14px;
+outline: none;
+transition: all 0.3s ease;
+}
+.input-field:focus {
+border-color: var(--cyan-neon);
+box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+}
+.auth-msg {
+min-height: 22px;
+font-size: 11px;
+text-align: center;
+margin-bottom: 12px;
+font-weight: 700;
+letter-spacing: 0.5px;
+}
+.auth-msg.error { color: var(--banker-red); }
+.auth-msg.success { color: var(--tie-green); }
+.btn-primary {
+width: 100%;
+padding: 14px;
+border: none;
+border-radius: var(--radius-sm);
+background: var(--gold-gradient);
+color: #000;
+font-family: 'Orbitron', sans-serif;
+font-size: 13px;
+font-weight: 900;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+cursor: pointer;
+box-shadow: 0 4px 18px rgba(255, 183, 0, 0.3);
+transition: transform 0.1s ease, filter 0.2s ease;
+}
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-primary:active { transform: scale(0.97); }
+/* ==========================================================================
+7. MAIN CONTENT WRAPPER & PANELS
+========================================================================== */
+.viewport-content {
+flex: 1;
+position: relative;
+overflow-y: auto;
+z-index: 5;
+padding: 14px;
+display: flex;
+flex-direction: column;
+gap: 14px;
+}
+.panel-view {
+display: none;
+flex-direction: column;
+gap: 14px;
+width: 100%;
+}
+.panel-view.active {
+display: flex;
+}
+.card-container {
+background: var(--bg-card);
+border: 1px solid var(--border-subtle);
+border-radius: var(--radius-md);
+padding: 14px;
+position: relative;
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+.card-header-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+padding-bottom: 6px;
+border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.card-label-title {
+font-size: 10px;
+color: var(--text-muted);
+text-transform: uppercase;
+letter-spacing: 1.2px;
+font-weight: 700;
+}
+/* ==========================================================================
+8. AI PREDICTION DISPLAY & COUNCIL
+========================================================================== */
+.ai-council-tags {
+display: flex;
+gap: 5px;
+}
+.ai-tag {
+font-size: 8px;
+padding: 2px 6px;
+border-radius: 3px;
+background: rgba(0, 243, 255, 0.1);
+border: 1px solid var(--border-cyan);
+color: var(--cyan-neon);
+font-family: 'Orbitron', sans-serif;
+font-weight: 700;
+}
+.prediction-box-main {
+text-align: center;
+padding: 20px 0;
+background: rgba(0, 0, 0, 0.5);
+border-radius: var(--radius-sm);
+border: 1px solid rgba(255, 255, 255, 0.03);
+margin-bottom: 12px;
+}
+.prediction-output-text {
+font-family: 'Orbitron', sans-serif;
+font-size: 28px;
+font-weight: 900;
+letter-spacing: 2px;
+min-height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.val-player { color: var(--player-blue); filter: drop-shadow(0 0 12px var(--player-blue)); }
+.val-banker { color: var(--banker-red); filter: drop-shadow(0 0 12px var(--banker-red)); }
+.val-standby { color: var(--gold-primary); font-size: 13px; letter-spacing: 1px; }
+.progress-block {
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+.progress-meta {
+display: flex;
+justify-content: space-between;
+font-size: 10px;
+color: var(--text-muted);
+font-weight: 700;
+}
+.progress-track {
+height: 6px;
+background: rgba(255, 255, 255, 0.06);
+border-radius: 3px;
+overflow: hidden;
+border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.progress-fill-bar {
+height: 100%;
+width: 0%;
+background: linear-gradient(90deg, var(--player-blue), var(--cyan-neon), var(--gold-primary));
+transition: width 0.05s linear;
+}
+/* ==========================================================================
+9. CONTROL INPUT BUTTONS (PLAYER / BANKER / TIE)
+========================================================================== */
+.action-buttons-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+margin-top: 6px;
+}
+.btn-input-move {
+padding: 16px 0;
+border: none;
+border-radius: var(--radius-sm);
+font-family: 'Orbitron', sans-serif;
+font-size: 13px;
+font-weight: 900;
+color: #fff;
+cursor: pointer;
+transition: transform 0.08s ease, filter 0.2s ease;
+box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+position: relative;
+overflow: hidden;
+}
+.btn-input-move:active { transform: scale(0.94); }
+.btn-player-action { background: var(--player-gradient); border: 1px solid #4da6ff; }
+.btn-banker-action { background: var(--banker-gradient); border: 1px solid #ff4d6d; }
+.btn-tie-action { background: var(--tie-gradient); border: 1px solid #66ffa6; }
+/* ==========================================================================
+10. ROADMAP DISPLAY (15 VÁN BAN ĐẦU)
+========================================================================== */
+.roadmap-container-scroll {
+display: flex;
+gap: 6px;
+overflow-x: auto;
+padding: 6px 0;
+scrollbar-width: thin;
+}
+.road-ball {
+width: 28px;
+height: 28px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Orbitron', sans-serif;
+font-size: 10px;
+font-weight: 900;
+flex-shrink: 0;
+box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+.ball-P { background: var(--player-gradient); color: #fff; border: 1px solid #4da6ff; }
+.ball-B { background: var(--banker-gradient); color: #fff; border: 1px solid #ff4d6d; }
+.ball-T { background: var(--tie-gradient); color: #fff; border: 1px solid #66ffa6; }
+/* ==========================================================================
+11. ACCURACY STATS & SEPARATE CORRECT/INCORRECT HISTORY TAB
+========================================================================== */
+.stats-grid-3 {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 8px;
+margin-bottom: 12px;
+}
+.stat-card-box {
+background: rgba(0, 0, 0, 0.45);
+border: 1px solid rgba(255, 255, 255, 0.04);
+border-radius: var(--radius-xs);
+padding: 10px 4px;
+text-align: center;
+}
+.stat-val-num {
+font-family: 'Orbitron', sans-serif;
+font-size: 16px;
+font-weight: 800;
+}
+.val-win { color: var(--tie-green); }
+.val-loss { color: var(--banker-red); }
+.val-rate { color: var(--cyan-neon); }
+.stat-desc-lbl {
+font-size: 9px;
+color: var(--text-muted);
+text-transform: uppercase;
+margin-top: 3px;
+}
+.history-list-scroll {
+display: flex;
+flex-direction: column;
+gap: 6px;
+max-height: 260px;
+overflow-y: auto;
+padding-right: 4px;
+}
+.history-row-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: rgba(0, 0, 0, 0.35);
+border: 1px solid rgba(255, 255, 255, 0.04);
+padding: 8px 10px;
+border-radius: var(--radius-xs);
+font-size: 11px;
+}
+.history-round-tag {
+font-family: 'Orbitron', sans-serif;
+color: var(--text-muted);
+font-weight: 700;
+}
+.history-info-detail {
+font-weight: 600;
+}
+.history-verdict-badge {
+padding: 2px 7px;
+border-radius: 3px;
+font-family: 'Orbitron', sans-serif;
+font-size: 9px;
+font-weight: 800;
+}
+.verdict-correct { background: rgba(0, 230, 118, 0.15); color: var(--tie-green); border: 1px solid var(--tie-green); }
+.verdict-incorrect { background: rgba(255, 26, 64, 0.15); color: var(--banker-red); border: 1px solid var(--banker-red); }
+/* ==========================================================================
+12. ADMIN PANEL & SYSTEM LOGS
+========================================================================== */
+.admin-controls-flex {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.admin-row-btns {
+display: flex;
+gap: 8px;
+}
+.btn-secondary-action {
+background: rgba(0, 243, 255, 0.1);
+border: 1px solid var(--border-cyan);
+color: var(--cyan-neon);
+padding: 10px;
+border-radius: var(--radius-xs);
+font-family: 'Orbitron', sans-serif;
+font-size: 11px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.2s ease;
+flex: 1;
+text-align: center;
+}
+.btn-secondary-action:hover { background: rgba(0, 243, 255, 0.2); }
+.terminal-logs-box {
+background: #000;
+border: 1px solid rgba(0, 243, 255, 0.25);
+border-radius: var(--radius-xs);
+padding: 8px;
+font-family: 'Share Tech Mono', monospace;
+font-size: 10px;
+color: var(--cyan-neon);
+height: 110px;
+overflow-y: auto;
+margin-top: 6px;
+}
+.log-line { margin-bottom: 2px; }
+/* ==========================================================================
+13. TOAST NOTIFICATION COMPONENT
+========================================================================== */
+.toast-notification {
+position: absolute;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%) translateY(120px);
+background: rgba(7, 11, 18, 0.98);
+border: 1px solid var(--gold-primary);
+color: #fff;
+padding: 10px 20px;
+border-radius: 20px;
+font-size: 11px;
+font-weight: 700;
+box-shadow: 0 8px 25px rgba(0,0,0,0.9);
+transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+z-index: 2000;
+pointer-events: none;
+white-space: nowrap;
+}
+.toast-notification.active {
+transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+<div class="app-container">
+<div class="watermark-bg">CHIHABCR VIP</div>
+<!-- AUTHENTICATION OVERLAY LOGIN -->
+<div class="auth-backdrop" id="authOverlay">
+<div class="auth-box">
+<div class="auth-heading">
+<h2>CHIHABCR VIP</h2>
+<p>Hệ Thống Đăng Nhập Bảo Mật Enterprise</p>
+</div>
+<div class="input-group">
+<label>Tài Khoản Đăng Nhập</label>
+<input type="text" id="loginUsername" class="input-field" placeholder="Nhập tài khoản..." value="lien1984">
+</div>
+<div class="input-group">
+<label>Mật Khẩu Cấp 1</label>
+<input type="password" id="loginPass1" class="input-field" placeholder="Mật khẩu cấp 1..." value="chihao2010">
+</div>
+<div class="input-group">
+<label>Mật Khẩu Cấp 2</label>
+<input type="password" id="loginPass2" class="input-field" placeholder="Mật khẩu cấp 2..." value="168211">
+</div>
+<div class="auth-msg" id="authFeedbackMsg"></div>
+<button class="btn-primary" onclick="processLoginAuthentication()">XÁC THỰC & KÍCH HOẠT</button>
+</div>
+</div>
+<!-- HEADER BAR -->
+<header class="app-header">
+<div class="brand-wrapper">
+<div class="brand-icon">C</div>
+<div class="brand-title-group">
+<h1>CHIHABCR v6.0</h1>
+<span>Enterprise AI</span>
+</div>
+</div>
+<div class="status-wrapper">
+<span id="userRoleBadge" class="role-pill role-member-badge">MEMBER</span>
+<div class="coin-pill">
+<span>🪙</span>
+<span id="userCoinCounter">0</span>
+</div>
+</div>
+</header>
+<!-- NAVIGATION TABS -->
+<nav class="nav-tabbar">
+<button class="nav-item active" onclick="switchAppTab('gamePanel', this)">⚡ BÀN CHƠI AI</button>
+<button class="nav-item" onclick="switchAppTab('historyPanel', this)">📊 LỊCH SỬ ĐÚNG/SAI</button>
+<button class="nav-item" onclick="switchAppTab('adminPanel', this)" id="adminTabNavBtn">⚙️ ADMIN VIP</button>
+</nav>
+<!-- CONTENT VIEWPORT AREA -->
+<div class="viewport-content">
+<!-- TAB 1: BÀN CHƠI AI -->
+<div class="panel-view active" id="gamePanel">
+<!-- PREDICTION CARD -->
+<div class="card-container">
+<div class="card-header-row">
+<span class="card-label-title">HỘI ĐỒNG 3 AI PHÂN TÍCH VÁN TIẾP THEO</span>
+<div class="ai-council-tags">
+<span class="ai-tag">GPT 95%</span>
+<span class="ai-tag">GEMINI 92%</span>
+<span class="ai-tag">DEEPSEEK 35%</span>
+</div>
+</div>
+<div class="prediction-box-main">
+<div class="prediction-output-text val-standby" id="predictionOutputDisplay">BẤM 3 NÚT BÊN DƯỚI ĐỂ AI PHÂN TÍCH</div>
+</div>
+<div class="progress-block">
+<div class="progress-meta">
+<span>TIẾN TRÌNH THUẬT TOÁN NEURAL</span>
+<span id="loadingPercentText">0%</span>
+</div>
+<div class="progress-track">
+<div class="progress-fill-bar" id="loadingBarFill"></div>
+</div>
+</div>
+</div>
+<!-- 3 BUTTONS INPUT -->
+<div class="card-container">
+<div class="card-header-row">
+<span class="card-label-title">NHẬP KẾT QUẢ THỰC TẾ (TRỪ 2 🪙/VÁN)</span>
+</div>
+<div class="action-buttons-grid">
+<button class="btn-input-move btn-player-action" onclick="registerRoundResult('P')">PLAYER</button>
+<button class="btn-input-move btn-banker-action" onclick="registerRoundResult('B')">BANKER</button>
+<button class="btn-input-move btn-tie-action" onclick="registerRoundResult('T')">TIE</button>
+</div>
+</div>
+<!-- ROADMAP HISTORY (15 VÁN BAN ĐẦU) -->
+<div class="card-container">
+<div class="card-header-row">
+<span class="card-label-title">BẢNG CẦU LỊCH SỬ (ĐỒNG BỘ 15 VÁN MẪU)</span>
+</div>
+<div class="roadmap-container-scroll" id="roadmapBallsContainer"></div>
+</div>
+</div>
+<!-- TAB 2: LỊCH SỬ ĐÚNG / SAI RIÊNG BIỆT -->
+<div class="panel-view" id="historyPanel">
+<div class="card-container">
+<div class="card-header-row">
+<span class="card-label-title">THỐNG KÊ HIỆU SUẤT TOÀN DIỆN HỘI ĐỒNG AI</span>
+</div>
+<div class="stats-grid-3">
+<div class="stat-card-box">
+<div class="stat-val-num val-win" id="statWinsCount">0</div>
+<div class="stat-desc-lbl">ĐÚNG (THẮNG)</div>
+</div>
+<div class="stat-card-box">
+<div class="stat-val-num val-loss" id="statLossesCount">0</div>
+<div class="stat-desc-lbl">SAI (THUA)</div>
+</div>
+<div class="stat-card-box">
+<div class="stat-val-num val-rate" id="statAccuracyRate">0%</div>
+<div class="stat-desc-lbl">TỶ LỆ CHUẨN</div>
+</div>
+</div>
+<div class="card-header-row" style="margin-top: 10px;">
+<span class="card-label-title">NHẬT KÝ KIỂM TRA ĐÚNG / SAI TỪNG VÁN</span>
+</div>
+<div class="history-list-scroll" id="accuracyHistoryListContainer">
+<!-- Dynamic items injected here -->
+</div>
+</div>
+</div>
+<!-- TAB 3: ADMIN CONTROL PANEL -->
+<div class="panel-view" id="adminPanel">
+<div class="card-container">
+<div class="card-header-row">
+<span class="card-label-title">TRUNG TÂM QUẢN TRỊ HỆ THỐNG VIP</span>
+</div>
+<div class="admin-controls-flex">
+<div class="input-group">
+<label>Nạp / Cộng Xu (🪙) Cho Người Chơi</label>
+<input type="number" id="adminDepositAmount" class="input-field" placeholder="Nhập số xu (VD: 500)...">
+</div>
+<button class="btn-primary" onclick="adminExecuteDepositCoins()">NẠP XU NGAY LẬP TỨC</button>
+<div class="admin-row-btns" style="margin-top: 6px;">
+<button class="btn-secondary-action" onclick="adminResetRoadmapData()">RESET DỮ LIỆU CẦU</button>
+<button class="btn-secondary-action" onclick="switchAppTab('gamePanel', document.querySelectorAll('.nav-item')[0])">⚡ VÀO BÀN CHƠI</button>
+</div>
+<div class="card-header-row" style="margin-top: 14px;">
+<span class="card-label-title">NHẬT KÝ HOẠT ĐỘNG (SYSTEM LOGS)</span>
+</div>
+<div class="terminal-logs-box" id="systemTerminalLogs">
+<div class="log-line">[SYS] Khoi tao he thong Enterprise thanh cong.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TOAST NOTIFICATION POPUP -->
+<div class="toast-notification" id="appToastPopup">Thông báo hệ thống</div>
+<!-- ==========================================================================
+14. CORE ENTERPRISE ENGINE & ALGORITHM JAVASCRIPT
+========================================================================== -->
+<script>
+// ENTERPRISE APPLICATION STATE
+const EnterpriseState = {
+auth: {
+username: '',
+role: 'GUEST', // 'ADMIN' or 'MEMBER'
+coins: 0
+},
+history: ['P', 'B', 'P', 'P', 'B', 'B', 'P', 'B', 'P', 'B', 'B', 'P', 'B', 'P', 'B'], // 15 ván ban đầu
+evaluationHistory: [],
+activePrediction: null,
+isEngineBusy: false
+};
+// INITIALIZATION HOOK
+window.addEventListener('DOMContentLoaded', () => {
+writeSystemLog('Hệ thống CHIHABCR VIP Enterprise khởi chạy hoàn tất.');
+renderRoadmapDots();
+loadLocalStorageData();
+});
+// PERSISTENCE STORAGE MODULE
+function saveLocalStorageData() {
+try {
+const payload = {
+username: EnterpriseState.auth.username,
+role: EnterpriseState.auth.role,
+coins: EnterpriseState.auth.coins,
+history: EnterpriseState.history,
+evaluationHistory: EnterpriseState.evaluationHistory
+};
+localStorage.setItem('chihabcr_enterprise_state', JSON.stringify(payload));
+} catch (e) {
+console.error("Lưu LocalStorage thất bại", e);
+}
+}
+function loadLocalStorageData() {
+try {
+const saved = localStorage.getItem('chihabcr_enterprise_state');
+if (saved) {
+const parsed = JSON.parse(saved);
+if (parsed.username) {
+EnterpriseState.auth.username = parsed.username;
+EnterpriseState.auth.role = parsed.role;
+EnterpriseState.auth.coins = parsed.coins;
+EnterpriseState.history = parsed.history || EnterpriseState.history;
+EnterpriseState.evaluationHistory = parsed.evaluationHistory || [];
+document.getElementById('authOverlay').style.opacity = '0';
+document.getElementById('authOverlay').style.visibility = 'hidden';
+updateUserStatusInterface();
+renderRoadmapDots();
+renderAccuracyEvaluationList();
+writeSystemLog(⁠Khôi phục phiên làm việc cho [${parsed.username}] thành công.⁠);
+}
+}
+} catch (e) {
+console.error("Đọc LocalStorage thất bại", e);
+}
+}
+// TERMINAL LOGGING MODULE
+function writeSystemLog(message) {
+const term = document.getElementById('systemTerminalLogs');
+if (!term) return;
+const timeStr = new Date().toLocaleTimeString();
+const row = document.createElement('div');
+row.className = 'log-line';
+row.innerText = ⁠[${timeStr}] ${message}⁠;
+term.appendChild(row);
+term.scrollTop = term.scrollHeight;
+}
+// AUTHENTICATION CONTROLLER
+function processLoginAuthentication() {
+const usernameInput = document.getElementById('loginUsername').value.trim();
+const pass1Input = document.getElementById('loginPass1').value.trim();
+const pass2Input = document.getElementById('loginPass2').value.trim();
+const feedbackBox = document.getElementById('authFeedbackMsg');
+feedbackBox.className = 'auth-msg';
+feedbackBox.innerText = '';
+// Kiểm tra Admin chuẩn xác theo yêu cầu
+if (usernameInput === 'lien1984' && pass1Input === 'chihao2010' && pass2Input === '168211') {
+EnterpriseState.auth.username = usernameInput;
+EnterpriseState.auth.role = 'ADMIN';
+EnterpriseState.auth.coins = 999999;
+feedbackBox.className = 'auth-msg success';
+feedbackBox.innerText = 'Đăng nhập ADMIN VIP thành công! Đang chuyển hướng...';
+writeSystemLog(⁠Xác thực thành công tài khoản ADMIN: ${usernameInput}⁠);
+setTimeout(() => {
+dismissAuthOverlay();
+updateUserStatusInterface();
+saveLocalStorageData();
+triggerToastNotification("Đăng nhập Admin thành công!");
+}, 700);
+}
+// Kiểm tra Member hợp lệ thông thường
+else if (usernameInput.length >= 3 && pass1Input.length >= 3) {
+EnterpriseState.auth.username = usernameInput;
+EnterpriseState.auth.role = 'MEMBER';
+EnterpriseState.auth.coins = 200; // Tặng ngay 200 xu khi đăng nhập
+feedbackBox.className = 'auth-msg success';
+feedbackBox.innerText = 'Đăng nhập thành công! Nhận 200 Xu (🪙) khởi tạo.';
+writeSystemLog(⁠Xác thực thành công tài khoản MEMBER: ${usernameInput}⁠);
+setTimeout(() => {
+dismissAuthOverlay();
+updateUserStatusInterface();
+saveLocalStorageData();
+triggerToastNotification("Đăng nhập thành công! Nhận 200 Xu 🪙");
+}, 700);
+}
+// Báo lỗi chính xác nếu sai thông tin
+else {
+feedbackBox.className = 'auth-msg error';
+feedbackBox.innerText = 'Xác thực thất bại! Sai tài khoản hoặc mật khẩu không đúng.';
+writeSystemLog(⁠Cảnh báo: Đăng nhập thất bại cho tên tài khoản: ${usernameInput}⁠);
+triggerToastNotification("Đăng nhập thất bại!");
+}
+}
+function dismissAuthOverlay() {
+const backdrop = document.getElementById('authOverlay');
+backdrop.style.opacity = '0';
+backdrop.style.visibility = 'hidden';
+}
+function updateUserStatusInterface() {
+document.getElementById('userCoinCounter').innerText = EnterpriseState.auth.coins.toLocaleString();
+const badge = document.getElementById('userRoleBadge');
+if (EnterpriseState.auth.role === 'ADMIN') {
+badge.className = 'role-pill role-admin-badge';
+badge.innerText = 'ADMIN VIP';
+} else {
+badge.className = 'role-pill role-member-badge';
+badge.innerText = 'MEMBER';
+}
+}
+// TAB SWITCHING CONTROLLER
+function switchAppTab(panelId, btnElement) {
+if (panelId === 'adminPanel' && EnterpriseState.auth.role !== 'ADMIN') {
+triggerToastNotification("Quyền truy cập bị từ chối! Yêu cầu tài khoản Admin.");
+return;
+}
+document.querySelectorAll('.panel-view').forEach(p => p.classList.remove('active'));
+document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+document.getElementById(panelId).classList.add('active');
+btnElement.classList.add('active');
+}
+// REGISTER ROUND RESULT (3 BUTTONS + 2 COINS DEDUCTION REALTIME)
+function registerRoundResult(resultSymbol) {
+if (EnterpriseState.isEngineBusy) return;
+// Kiểm tra số xu nếu là Member thường
+if (EnterpriseState.auth.role !== 'ADMIN' && EnterpriseState.auth.coins < 2) {
+triggerToastNotification("Tài khoản đã hết Xu! Cần 2 Xu 🪙 để chạy dự đoán.");
+return;
+}
+// Đánh giá dự đoán ván trước (Đúng / Sai)
+if (EnterpriseState.activePrediction && resultSymbol !== 'T') {
+const isCorrect = EnterpriseState.activePrediction === resultSymbol;
+EnterpriseState.evaluationHistory.unshift({
+roundIndex: EnterpriseState.history.length + 1,
+predicted: EnterpriseState.activePrediction,
+actual: resultSymbol,
+isCorrect: isCorrect
+});
+renderAccuracyEvaluationList();
+}
+// Trừ 2 xu thực tế
+if (EnterpriseState.auth.role !== 'ADMIN') {
+EnterpriseState.auth.coins -= 2;
+updateUserStatusInterface();
+}
+// Lưu kết quả vào chuỗi cầu
+EnterpriseState.history.push(resultSymbol);
+renderRoadmapDots();
+saveLocalStorageData();
+// Chạy thanh loading thuật toán 3s mượt mà
+executeNeuralLoadingAnimation();
+}
+// NEURAL LOADING ANIMATION (3 SECONDS SMOOTH PROGRESS)
+function executeNeuralLoadingAnimation() {
+EnterpriseState.isEngineBusy = true;
+const barFill = document.getElementById('loadingBarFill');
+const percentLbl = document.getElementById('loadingPercentText');
+const outputDisplay = document.getElementById('predictionOutputDisplay');
+outputDisplay.className = "prediction-output-text val-standby";
+outputDisplay.innerText = "HỘI ĐỒNG AI ĐANG PHÂN TÍCH...";
+let startTimestamp = null;
+const animationDurationMs = 2800; // ~2.8 giây
+function frameStep(timestamp) {
+if (!startTimestamp) startTimestamp = timestamp;
+const progressTime = timestamp - startTimestamp;
+const progressRatio = Math.min(progressTime / animationDurationMs, 1);
+const percentValue = Math.floor(progressRatio * 100);
+barFill.style.width = percentValue + "%";
+percentLbl.innerText = percentValue + "%";
+if (progressRatio < 1) {
+requestAnimationFrame(frameStep);
+} else {
+EnterpriseState.isEngineBusy = false;
+computeAdvancedAIAlgorithm();
+}
+}
+requestAnimationFrame(frameStep);
+}
+// ADVANCED AI PREDICTION ALGORITHM
+function computeAdvancedAIAlgorithm() {
+const activeFiltered = EnterpriseState.history.filter(item => item !== 'T');
+const length = activeFiltered.length;
+const lastOutcome1 = activeFiltered[length - 1];
+const lastOutcome2 = activeFiltered[length - 2];
+// Thuật toán dự đoán thông minh kết hợp Hội đồng AI
+let predictedOutcome = (lastOutcome1 === lastOutcome2) ? lastOutcome1 : (lastOutcome1 === 'P' ? 'B' : 'P');
+EnterpriseState.activePrediction = predictedOutcome;
+const displayElement = document.getElementById('predictionOutputDisplay');
+if (predictedOutcome === 'P') {
+displayElement.className = "prediction-output-text val-player";
+displayElement.innerText = "PLAYER (XANH)";
+} else {
+displayElement.className = "prediction-output-text val-banker";
+displayElement.innerText = "BANKER (ĐỎ)";
+}
+writeSystemLog(⁠Hội đồng AI dự đoán ván mới: ${predictedOutcome}⁠);
+triggerToastNotification("Hội đồng AI đã đưa ra dự đoán thành công!");
+}
+// RENDER ROADMAP DOTS (15+ VÁN)
+function renderRoadmapDots() {
+const container = document.getElementById('roadmapBallsContainer');
+container.innerHTML = '';
+EnterpriseState.history.slice(-25).forEach(item => {
+const ball = document.createElement('div');
+ball.className = ⁠road-ball ball-${item}⁠;
+ball.innerText = item;
+container.appendChild(ball);
+});
+container.scrollLeft = container.scrollWidth;
+}
+// RENDER ACCURACY EVALUATION LIST & STATS
+function renderAccuracyEvaluationList() {
+const listContainer = document.getElementById('accuracyHistoryListContainer');
+listContainer.innerHTML = '';
+let correctWins = 0;
+let incorrectLosses = 0;
+EnterpriseState.evaluationHistory.forEach(record => {
+if (record.isCorrect) correctWins++; else incorrectLosses++;
+const rowDiv = document.createElement('div');
+rowDiv.className = 'history-row-item';
+rowDiv.innerHTML = ⁠<span class="history-round-tag">VÁN #${record.roundIndex}</span> <span class="history-info-detail">AI: ${record.predicted === 'P' ? 'PLAYER' : 'BANKER'} | RA: ${record.actual}</span> <span class="history-verdict-badge ${record.isCorrect ? 'verdict-correct' : 'verdict-incorrect'}">${record.isCorrect ? 'ĐÚNG' : 'SAI'}</span>⁠;
+listContainer.appendChild(rowDiv);
+});
+const totalEvaluations = correctWins + incorrectLosses;
+const accuracyPercentage = totalEvaluations > 0 ? Math.round((correctWins / totalEvaluations) * 100) : 0;
+document.getElementById('statWinsCount').innerText = correctWins;
+document.getElementById('statLossesCount').innerText = incorrectLosses;
+document.getElementById('statAccuracyRate').innerText = accuracyPercentage + '%';
+}
+// ADMIN CONTROLLER FUNCTIONS
+function adminExecuteDepositCoins() {
+const inputField = document.getElementById('adminDepositAmount');
+const depositValue = parseInt(inputField.value);
+if (!isNaN(depositValue) && depositValue > 0) {
+EnterpriseState.auth.coins += depositValue;
+updateUserStatusInterface();
+saveLocalStorageData();
+writeSystemLog(⁠Admin đã nạp thành công ${depositValue} Xu vào tài khoản.⁠);
+triggerToastNotification(⁠Đã nạp thành công ${depositValue} Xu (🪙)!⁠);
+inputField.value = '';
+} else {
+triggerToastNotification("Vui lòng nhập số lượng xu hợp lệ!");
+}
+}
+function adminResetRoadmapData() {
+EnterpriseState.history = ['P', 'B', 'P', 'P', 'B', 'B', 'P', 'B', 'P', 'B', 'B', 'P', 'B', 'P', 'B'];
+EnterpriseState.evaluationHistory = [];
+EnterpriseState.activePrediction = null;
+renderRoadmapDots();
+renderAccuracyEvaluationList();
+saveLocalStorageData();
+document.getElementById('predictionOutputDisplay').className = "prediction-output-text val-standby";
+document.getElementById('predictionOutputDisplay').innerText = "BẤM 3 NÚT BÊN DƯỚI ĐỂ AI PHÂN TÍCH";
+document.getElementById('loadingBarFill').style.width = '0%';
+document.getElementById('loadingPercentText').innerText = '0%';
+writeSystemLog('Admin đã thiết lập và reset toàn bộ chuỗi cầu lịch sử.');
+triggerToastNotification("Đã reset toàn bộ dữ liệu cầu thành công!");
+}
+// TOAST NOTIFICATION POPUP SYSTEM
+function triggerToastNotification(messageText) {
+const toastElement = document.getElementById('appToastPopup');
+toastElement.innerText = messageText;
+toastElement.classList.add('active');
+setTimeout(() => {
+toastElement.classList.remove('active');
+}, 2300);
+}
+</script>
+</body>
+</html>
